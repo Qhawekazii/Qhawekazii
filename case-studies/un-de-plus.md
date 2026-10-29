@@ -37,6 +37,15 @@ For a tour operator selling to international visitors, a form that quietly drops
 - **Security in the database.** Row Level Security means customers can only read their own itineraries, anyone can submit an enquiry, and only admins can read them all.
 - **The client owns his hosting.** He pays Vercel directly on his own card, so the site doesn't depend on me to stay online.
 
+## Under the hood
+
+- Next.js 14 App Router with TypeScript and Tailwind CSS.
+- Supabase Auth and Row Level Security: customers read only their own itineraries, anyone can submit an enquiry, only admins read them all.
+- Re-runnable SQL migrations (drop-then-create, since Postgres has no CREATE POLICY IF NOT EXISTS).
+- jsPDF loaded with a dynamic import, so the PDF library only downloads when someone exports.
+- Google Docs export through Google Identity Services.
+- Fixed the JSON-LD that crashed the build, added sitemap, robots and share metadata, and patched dependency vulnerabilities.
+
 ## Outcome
 
 - Booking and contact enquiries are captured instead of lost

@@ -27,6 +27,15 @@ Two constraints shaped everything: most visitors are parents on phones with limi
 
 **Rebuilt it as it grew.** I started with plain HTML/CSS/JS, then migrated to React + Vite with a bolder sports-brand redesign once the content structure was clear. I also fixed a deployment issue so the same build works on both GitHub Pages and Vercel.
 
+## Under the hood
+
+- First load cut from 32 MB to 3.9 MB: small thumbnails in the grid, full resolution only in the lightbox.
+- Lightbox built as an accessible dialog with a focus trap and focus restore.
+- WCAG AA contrast, visible focus states, larger touch targets, and animation switched off for prefers-reduced-motion.
+- Division tabs filter fixtures, squad and gallery from one data file.
+- React 19 + Vite with CSS Modules and shared design tokens.
+- Conditional Vite base path so one build deploys to both GitHub Pages (via GitHub Actions) and Vercel.
+
 ## Outcome
 
 - 88% lighter first load (32 MB → 3.9 MB)

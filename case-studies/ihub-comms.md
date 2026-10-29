@@ -45,6 +45,15 @@ iHub runs its learner cohorts across several separate platforms: one for courses
 - **Honest about what isn't connected yet.** Course, class and attendance platforms without API access show "not set up yet" instead of made-up numbers.
 - **Designed to replace, not add.** Every feature maps to a tool iHub was already paying for or a gap they were covering by hand.
 
+## Under the hood
+
+- Permissions enforced in PostgreSQL with Row Level Security for learner, mentor and admin, not just hidden in the UI.
+- Invite-only accounts: a security-definer accept_invite() function sets role and cohort, and a trigger stops non-admins changing their own role.
+- Live updates for announcements, messages, task comments and notifications through Supabase Realtime subscriptions.
+- Submissions and profile photos in Supabase Storage, with photos visible only to the learner's own cohort.
+- One Postgres search function across tasks, announcements, messages, submissions, schedule and notes, still filtered by RLS.
+- Edge Functions for invite emails (Resend), integration sync behind one adapter per platform, and an assistant that queries with the user's own token.
+
 ## Outcome
 
 - One platform covering announcements, chat, tasks, submissions, schedule, attendance, courses and notes
